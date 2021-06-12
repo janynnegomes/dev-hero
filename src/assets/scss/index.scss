@@ -1,6 +1,14 @@
 @import 'variables.scss';
-@import 'reset.scss';
+//@import 'reset.scss';
 
 body{
 background-color: $secondary;
+}
+
+.carousel{
+    .carousel-item{
+        img{
+            height: calc(100vh - 170px);
+        }
+    }
 }

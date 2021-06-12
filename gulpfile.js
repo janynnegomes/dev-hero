@@ -1,50 +1,80 @@
-var gulp  = require('gulp'),
-imagemin = require('gulp-imagemin'),
-clean = require('gulp-clean'),
-concat = require('gulp-concat'),
-htmlReplace = require('gulp-html-replace');
+const { series, parallel, src, dest, watch } = require('gulp');
+const clean = require('gulp-clean');
+const concat = require('gulp-concat');
+const imagemin = require('gulp-imagemin');
+const htmlReplace = require('gulp-html-replace');
+const uglify = require('gulp-uglify');
+const cssmin = require('gulp-cssmin');
+const usemin = require('gulp-usemin');
+const browserSync = require('browser-sync');
 
-
-// Limpa os arquivos da pasta final da build
-gulp.task('clean', ()=>{
-   return gulp.src('dist').
+// limpa a pasta de distribuição para receber novos arquivos
+function clear(done) {
+    return src('dist',{ allowEmpty: true }).
     pipe(clean());
-});
+}
 
-// copia os arquivos a finais do projeto para a pasta dist
-// mas antes, chama a clean pra limpar a pasta dist
-gulp.task('copy', gulp.series('clean'), ()=>{
-    return gulp.src('src/**/*').
-        pipe(gulp.dest('dist')
-    );
-});
+// copia os arquivos originais para a pasta de distribuição
+function copy(done) {
+    const origin = 'src/**/*';
+    const targetFolder= 'dist';
+    console.log('copiando arquivos ...');
+    return src(origin).
+        pipe(dest(targetFolder));
+}
 
-gulp.task('build-img', gulp.parallel('copy'), ()=>{
-    return gulp.src('dist/assets/img/**/*').
-     pipe(imagemin()).
-     pipe(gulp.dest('dist/assets/img'));
- });
-
- gulp.task('build-js', ()=>{
-     return gulp.src('dist/assets/js/**/*').
+// concatena os scripts js em apenas um arquivo final
+function javascript(done) {
+    return src('dist/assets/js/**/*').
      pipe(concat('all.js')).
-     pipe(gulp.dest('dist/assets/js'));
- });
+     pipe(uglify()).
+     pipe(dest('dist/assets/js'));
+}
 
- gulp.task('build-html', ()=>{
-     return gulp.src('dist/**/*.html').
-     pipe(htmlReplace({
-         js: 'all.js'
-     })).
-     pipe(gulp.dest('dist'));
- });
+// Concatena os arquivos de estilo em um arquivo final
+function buildCss(done) {
+    return src(['node_modules/bootstrap/dist/css/bootstrap.min.css',
+                'dist/assets/css/**/*.css']).
+     pipe(concat('all.css')).
+     pipe(dest('dist/assets/css'));
+}
 
- gulp.task('build-scss', gulp.parallel('copy'), ()=>{
-    return gulp.src('dist/assets/img/**/*').
+// Realiza otimização das imagens e salva na pasta de distribuição
+function buildImages (done){
+    console.log('Otimizando imagens');
+    return src('dist/assets/img/**/*').
      pipe(imagemin()).
-     pipe(gulp.dest('dist/assets/img'));
- });
+     pipe(dest('dist/assets/img'));
+ }
 
- gulp.task('default',gulp.parallel('build-img','build-js','build-html'), (done)=>{
-    done();   
-});
+// Substitui no HTML a referência aos arquivos javascript, injetando apenas o arquivo final
+function buildHtml(done){
+    return src('dist/**/*.html').
+     pipe(htmlReplace({
+         js: '../assets/js/all.js'
+     })).
+     pipe(dest('dist'));
+ }
+
+ // concatena os scripts js em apenas um arquivo final
+function minify(done) {
+    return src('dist/**/*.html').
+     pipe(usemin({
+         'js': [uglify],
+         'css': [cssmin]
+     })).
+     pipe(dest('dist'));
+}
+
+function serve(done){
+    browserSync.init({
+        server:{
+            baseDir:'src'
+        }
+    })
+    
+     watch('src/**/*').on('change', browserSync.reload);
+}
+
+exports.serve = serve;
+exports.build = series(clear, copy, parallel(buildImages, buildCss, minify));
