@@ -1,5 +1,6 @@
+@import 'reset.scss';
 @import 'variables.scss';
-//@import 'reset.scss';
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
 
 body{
     background-color: $background;
@@ -30,9 +31,7 @@ body{
         color: $black;
     }
 
-    img{
-
-        
+    img{        
         border-radius: 0;
     }
 }
