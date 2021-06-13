@@ -30,6 +30,7 @@
     "gulp-cssmin": "^0.2.0",
     "gulp-html-replace": "^1.6.2",
     "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
     "gulp-usemin": "^0.3.30",
     "node-sass": "^6.0.0",

@@ -7,6 +7,9 @@ const uglify = require('gulp-uglify');
 const cssmin = require('gulp-cssmin');
 const usemin = require('gulp-usemin');
 const browserSync = require('browser-sync');
+const sass = require('gulp-sass');
+
+sass.compiler = require('node-sass');
 
 // limpa a pasta de distribuição para receber novos arquivos
 function clear(done) {
@@ -76,5 +79,17 @@ function serve(done){
      watch('src/**/*').on('change', browserSync.reload);
 }
 
+function sassRun () {
+    return src('src/assets/scss/**/*.scss')
+      .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+      .pipe(dest('src/assets/css'));
+}
+   
+function sassWatch() {
+    return watch('src/assets/scss/**/*.scss', series(sassRun));
+}
+
 exports.serve = serve;
+exports.sass = sassRun;
+exports.sassWatch = sassWatch;
 exports.build = series(clear, copy, parallel(buildImages, buildCss, minify));
