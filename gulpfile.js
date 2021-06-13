@@ -3,7 +3,6 @@ const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
-const cssmin = require('gulp-cssmin');
 const usemin = require('gulp-usemin');
 const browserSync = require('browser-sync');
 const sass = require('gulp-sass');

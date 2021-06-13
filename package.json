@@ -4,20 +4,20 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "gulp",
-    "build": "gulp sassRun && gulp build"
+    "build": "gulp build",
+    "serve": "gulp serve"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janynnegomes/gulp-optmization-demo-app.git"
+    "url": "git+https://github.com/janynnegomes/dev-hero.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/janynnegomes/gulp-optmization-demo-app/issues"
+    "url": "https://github.com/janynnegomes/dev-hero/issues"
   },
-  "homepage": "https://github.com/janynnegomes/gulp-optmization-demo-app#readme",
+  "homepage": "https://github.com/janynnegomes/dev-hero#readme",
   "dependencies": {
     "bootstrap": "^4.6.0"
   },
