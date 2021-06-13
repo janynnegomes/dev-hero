@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "gulp",
     "build": "gulp build-img",
-    "sass": "sass --watch src/assets/scss:src/assets/css"
+    "sass": "sass --watch src/assets/scss:src/assets/css --style compressed"
   },
   "repository": {
     "type": "git",

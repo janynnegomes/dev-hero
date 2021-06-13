@@ -3,11 +3,17 @@
 Esse projeto contém um site simples, com vários recursos visuais e já vem configurado para otimização de performance utilizando vários plugins do automatizador de tarefas **Gulp**.
 
 ## Dependências
+
 * Gulp 
-* Imagemin
-* CssMin
-* Sass
-* BrowserSync
+* [Gulp Clean](https://www.npmjs.com/package/gulp-clean)
+* [Gulp Concat](https://www.npmjs.com/package/gulp-concat)
+* [Gulp Imagemin](https://www.npmjs.com/package/gulp-imagemin)
+* [Gulp Cssmin](https://www.npmjs.com/package/gulp-cssmin)
+* [Gulp Html Replace](https://www.npmjs.com/package/gulp-html-replace)
+* [Gulp Usemin](https://www.npmjs.com/package/gulp-usemin)
+* [Gulp Uglify](https://www.npmjs.com/package/gulp-uglify)
+* [BrowserSync](https://www.npmjs.com/package/browser-sync)
+* [Sass](https://www.npmjs.com/package/sass)
 
 ## Instalação
 Execute o comando ``` npm install```
