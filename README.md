@@ -2,6 +2,8 @@
 
 Esse projeto contém um site simples, com vários recursos visuais e já vem configurado para otimização de performance utilizando vários plugins do automatizador de tarefas **Gulp**.
 
+![janynnegomes github io_dev-hero_(iPad Pro)](https://user-images.githubusercontent.com/810723/121822903-18413300-cc78-11eb-9f17-ebab1afe55af.png)
+
 ## Dependências
 
 * Gulp 
