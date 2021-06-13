@@ -1,6 +1,8 @@
 name: Pipeline Production
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ master ]
 
