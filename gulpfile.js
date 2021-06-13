@@ -2,12 +2,12 @@ const { series, parallel, src, dest, watch } = require('gulp');
 const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
-const htmlReplace = require('gulp-html-replace');
 const uglify = require('gulp-uglify');
 const cssmin = require('gulp-cssmin');
 const usemin = require('gulp-usemin');
 const browserSync = require('browser-sync');
 const sass = require('gulp-sass');
+const htmlmin = require('gulp-htmlmin');
 
 sass.compiler = require('node-sass');
 
@@ -50,24 +50,15 @@ function buildImages (done){
      pipe(dest('dist/assets/img'));
  }
 
-// Substitui no HTML a referência aos arquivos javascript, injetando apenas o arquivo final
-function buildHtml(done){
-    return src('dist/**/*.html').
-     pipe(htmlReplace({
-         js: '../assets/js/all.js'
-     })).
-     pipe(dest('dist'));
- }
-
- // concatena os scripts js em apenas um arquivo final
-function minify(done) {
-    return src('dist/**/*.html').
-     pipe(usemin({
-         'js': [uglify],
-         'css': [cssmin]
-     })).
-     pipe(dest('dist'));
-}
+ function minify() {
+    return src('./*.html')
+      .pipe(usemin({
+        html: [ function () {return htmlmin({ collapseWhitespace: true });} ],
+        js: [ uglify ],
+        inlinejs: [ uglify ]
+      }))
+      .pipe(dest('build/'));
+    }
 
 function serve(done){
     browserSync.init({
@@ -76,7 +67,7 @@ function serve(done){
         }
     })
     
-     watch('src/**/*').on('change', browserSync.reload);
+    watch('src/**/*').on('change', browserSync.reload);    
 }
 
 function sassRun () {
@@ -92,4 +83,5 @@ function sassWatch() {
 exports.serve = serve;
 exports.sass = sassRun;
 exports.sassWatch = sassWatch;
-exports.build = series(clear, copy, parallel(buildImages, buildCss, minify));
+exports.minify = minify;
+exports.build = series(clear, sassRun, copy, parallel(buildImages, buildCss, minify));
