@@ -38,3 +38,9 @@ Os arquivos estarão otimizados com a redução do peso e unificação de alguns
 
 ![PageSpeed-Insights](https://user-images.githubusercontent.com/810723/121823169-ca2d2f00-cc79-11eb-8918-0da6b1177b0e.png)
 
+
+## Resultado de performance no WebPageTest
+https://www.webpagetest.org/result/210613_AiDcE5_4373e7fbe5ef95e20921ffff0664563a/ 
+
+![WebPageTest-Test-Result-Sao-Paulo-jany-ithub-io-dev-hero-06-13-21-19-12-53](https://user-images.githubusercontent.com/810723/121823510-ff3a8100-cc7b-11eb-84ef-f8db9a68e7f3.png)
+
