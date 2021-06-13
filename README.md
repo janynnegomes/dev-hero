@@ -1,6 +1,6 @@
 # Dev Hero
 
-Esse projeto contém um site simples, com vários recursos visuais e já vem configurado para otimização de performance utilziando vários plugin **Gulp**.
+Esse projeto contém um site simples, com vários recursos visuais e já vem configurado para otimização de performance utilizando vários plugins do automatizador de tarefas **Gulp**.
 
 ## Dependências
 * Gulp 
