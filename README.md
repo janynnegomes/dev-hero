@@ -33,3 +33,8 @@ Execute o comando ``` npm run build```.
 Será gerada uma pasta  ``` dist ```com os arquivos prontos para serem publicados em um servidor web.
 
 Os arquivos estarão otimizados com a redução do peso e unificação de alguns scripts e CSS.
+
+## Resultado de performance no PageSpeed Insights
+
+![PageSpeed-Insights](https://user-images.githubusercontent.com/810723/121823169-ca2d2f00-cc79-11eb-8918-0da6b1177b0e.png)
+
