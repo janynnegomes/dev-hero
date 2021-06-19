@@ -1,0 +1,9 @@
+version: '2.1'
+
+services: 
+    dev-hero-app:
+        image: dev-hero-app
+        build: .
+        ports:
+            - 8080:80
+            - 8081:81
