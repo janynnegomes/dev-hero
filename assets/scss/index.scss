@@ -1,0 +1,44 @@
+@import 'reset.scss';
+@import 'variables.scss';
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+body{
+    background-color: $background;
+    color: $font-color;
+
+    .navbar{
+        background: $primary;
+        &-brand{
+            color:$secondary;
+        }
+    }
+    .footer{
+        border-top: 3px $primary solid;
+
+        &__rigth{
+            border-left: 1px #313131 solid;
+        }
+    }
+}
+
+//sobescrever estilos bootstrap
+.card{
+    border-radius: 0;
+    border:0;
+
+    &-title,
+    &-text{
+        color: $black;
+    }
+
+    img{        
+        border-radius: 0;
+    }
+}
+.carousel{
+    .carousel-item{
+        img{
+            height: calc(100vh - 170px);
+        }
+    }
+}
