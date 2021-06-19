@@ -34,6 +34,20 @@ Será gerada uma pasta  ``` dist ```com os arquivos prontos para serem publicado
 
 Os arquivos estarão otimizados com a redução do peso e unificação de alguns scripts e CSS.
 
+## Deploy
+
+Execute o comando ``` docker-compose -f "docker-compose.yml" up -d --build  ``` para subir o container com a aplicação original e também na versão otimizada para então fazer as comparações do resultado final.
+
+* Site Otimizado - (http://localhost:8080)[http://localhost:8080]
+* Site Original não otimizado - (http://localhost:8080)[http://localhost:8082]
+
+## Checklist para otimização
+- aplicar sprites nas imagens
+- aplicar versionamento nos assets (Gulp Rev)
+- ativar Gzip no servidor: ok
+- ativar cache-control no servidor para os assets
+- paralelizar requests servindo assets em domínios/subdomínios diferentes : ok (URL de imagens vindo do servidor http://localhost:8081)
+
 ## Resultado de performance no PageSpeed Insights
 
 ![PageSpeed-Insights](https://user-images.githubusercontent.com/810723/121823169-ca2d2f00-cc79-11eb-8918-0da6b1177b0e.png)

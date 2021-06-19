@@ -25,13 +25,13 @@ function copy(done) {
         pipe(dest(targetFolder));
 }
 
-// concatena os scripts js em apenas um arquivo final
-function javascript(done) {
-    return src('dist/assets/js/**/*').
-     pipe(concat('all.js')).
-     pipe(uglify()).
-     pipe(dest('dist/assets/js'));
-}
+// // concatena os scripts js em apenas um arquivo final
+// function javascript(done) {
+//     return src('dist/assets/js/**/*').
+//      pipe(concat('all.js')).
+//      pipe(uglify()).
+//      pipe(dest('dist/assets/js'));
+// }
 
 // Concatena os arquivos de estilo em um arquivo final
 function buildCss(done) {
